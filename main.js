@@ -1,7 +1,7 @@
 const { range, rand} =  require("./utils/range");
 
 let columnsValue = [];
-const columnsValueLenght = [9,10,10,10,10,10,10,10,11]
+const columnsValueLength = [9,10,10,10,10,10,10,10,11]
 const numberFolder = 6;
 
 const totalNumber =  range(1,91)
@@ -48,7 +48,7 @@ function addNumber(row, array) {
     const casualNumber = Math.floor(Math.random()* row.length);
     // excluded.forEach(row => {
     //     if(row.includes(casualNumber)) {
-    //         console.log("e successo con il numero", casualNumber)
+    //         console.log("è successo con il numero", casualNumber)
     //         //addNumber(row, array, excluded);
     //     }
     // });
