@@ -1,6 +1,5 @@
 const { range, rand} =  require("./utils/range");
 
-let columnsValue = [];
 const columnsValueLength = [9,10,10,10,10,10,10,10,11]
 const numberFolder = 6;
 
@@ -14,7 +13,7 @@ const series = [];
 
 for (let i = 0; i < numberFolder/6; i++) {
     let folder = [];
-    columnsValue.push(
+    let columnsValue = [
         range(1,10,1),
         range(10,20,1),
         range(20,30,1),
@@ -23,23 +22,30 @@ for (let i = 0; i < numberFolder/6; i++) {
         range(50,60,1),
         range(60,70,1),
         range(70,80,1),
-        range(80,91,1),
-    );
+        range(80,91,1)];
 
-    for (let j = 0; j < 3; j++) {
-        const row = [];
-        columnsValue.forEach(group => {
-            const value = addNumber(group, row);
-            columnsValue = columnsValue.map(r => r.filter(r => r !== value))
-        });
-        // prendi 5 numeri per ogni riga
-        const values = row.sort(() => .5 - Math.random()).slice(0,5).sort((a, b) => a-b );
-        folder.push({folder: i,  values})
+    for (let f = 0; f < 6; f++) {
+
+        for (let j = 0; j < 3; j++) {
+            const row = [];
+            columnsValue.map(group => {
+                const value = addNumber(group, row);
+                columnsValue.forEach(row => {
+                    if(row.includes(value)) {
+                        row.splice(row.findIndex(r => r !== value))
+                    }
+                })
+                //columnsValue = columnsValue.map(row => row.filter(r => r !== value))
+            });
+            // prendi 5 numeri per ogni riga
+            const values = row.sort(() => .5 - Math.random()).slice(0,5).sort((a, b) => a-b );
+            folder.push({series: i+1, folder: f+1,  values});
+            //console.log(columnsValue)
+        }
+
     }
-
     console.log(columnsValue)
     console.log(folder)
-
 
 }
 
