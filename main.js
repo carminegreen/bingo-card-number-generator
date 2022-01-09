@@ -1,15 +1,11 @@
-const { range, rand} =  require("./utils/range");
+const { range} =  require("./utils/range");
 
-const columnsValueLength = [9,10,10,10,10,10,10,10,11]
+// const columnsValueLength = [9,10,10,10,10,10,10,10,11]
 const numberFolder = 6;
-
-const totalNumber =  range(1,91,1)
 
 if (numberFolder % 6 !== 0) {
     return console.log("Inserire come numberFolder un multiplo di 6")
 }
-
-const series = [];
 
 for (let i = 0; i < numberFolder/6; i++) {
     let folder = [];
@@ -25,32 +21,35 @@ for (let i = 0; i < numberFolder/6; i++) {
         range(80,91,1)
     ];
 
-    // columnsValue.forEach((row,i)  => {
-    //
-    // })
+    console.log(columnsValue)
 
     for (let f = 0; f < 6; f++) {
 
         for (let j = 0; j < 3; j++) {
             const row = [];
             columnsValue.forEach((group, i) => {
-                addNumber(group, row)
+                addNumber(group.filter(v => !!v), row)
             });
             // prendi 5 numeri per ogni riga
             const values = row.sort(() => .5 - Math.random()).sort(() => .5 - Math.random()).slice(2,7).sort((a, b) => a-b );
-            // console.log(values.map(value => columnsValue.find(row => row.find(v => v === value))))
+            values.forEach(value => columnsValue.forEach(row => {
+                const v = row.findIndex(v => v === value);
+                if (v !== -1) {
+                    columnsValue[columnsValue.indexOf(row)] = row.filter(r => r !== value)
+                }
+            }));
             folder.push({series: i+1, folder: f+1,  values});
             //console.log(columnsValue)
         }
 
     }
     // console.log(columnsValue)
-     console.log(folder)
+    // console.log(folder)
 
 }
 
 
-function addNumber(row, array) {
+function addNumber(row, result) {
     const casualNumber = Math.floor(Math.random()* row.length);
-    array.push(row[casualNumber]);
+    result.push(row[casualNumber]);
 }
