@@ -37,8 +37,8 @@ for (let i = 0; i < numberFolder/6; i++) {
                 addNumber(group, row)
             });
             // prendi 5 numeri per ogni riga
-            const values = row.sort(() => .5 - Math.random()).slice(0,5).sort((a, b) => a-b );
-            console.log(values.map(value => columnsValue.find(row => row.find(v => v === value))))
+            const values = row.sort(() => .5 - Math.random()).sort(() => .5 - Math.random()).slice(2,7).sort((a, b) => a-b );
+            // console.log(values.map(value => columnsValue.find(row => row.find(v => v === value))))
             folder.push({series: i+1, folder: f+1,  values});
             //console.log(columnsValue)
         }
