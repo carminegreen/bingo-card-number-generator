@@ -43,6 +43,12 @@ function main() {
             }
 
         }
+        folder.forEach(row => {
+            if(row.values.length === 5) {
+                 return;
+            }
+            // console.log(columnsValue.map(r => r.find(v => !!v)))
+        });
         // console.log(columnsValue)
         console.log(folder)
 
@@ -55,6 +61,5 @@ function addNumber(row, result) {
         return;
     }
     const casualNumber = Math.floor(Math.random()* row.length);
-
     result.push(row[casualNumber]);
 }
