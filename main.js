@@ -39,7 +39,7 @@ function main() {
                     addNumber(columnsValue[item.index], result);
                 })
 
-                folder.push({result});
+                folder.push({values: result });
                 result.forEach(value => columnsValue.forEach(row => {
                     const v = row.findIndex(v => v === value);
                     if (v !== -1) {
