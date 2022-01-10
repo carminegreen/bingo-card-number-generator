@@ -7,7 +7,7 @@ main();
 function main() {
 
     // const columnsValueLength = [9,10,10,10,10,10,10,10,11]
-    const numberFolder = 2004;
+    const numberFolder = process.argv[2] || 6;
 
     if (numberFolder % 6 !== 0) {
         return console.log("Inserire come numberFolder un multiplo di 6")
@@ -56,7 +56,7 @@ function main() {
     }
     fs.writeFile("./folders.json", JSON.stringify(series, null, 4), (err) => {
         if (err) {  console.error(err);  return; };
-        console.log("Folder Saved!");
+        console.log(`${numberFolder} folders were successfully generated!`);
     });
 }
 
