@@ -6,7 +6,7 @@ main();
 function main() {
 
     // const columnsValueLength = [9,10,10,10,10,10,10,10,11]
-    const numberFolder = 6;
+    const numberFolder = 12;
 
     if (numberFolder % 6 !== 0) {
         return console.log("Inserire come numberFolder un multiplo di 6")
@@ -29,16 +29,17 @@ function main() {
         ];
 
         for (let f = 0; f < 6; f++) {
+            const folder = [];
 
             for (let j = 0; j < 3; j++) {
                 const result = [];
 
-                columnsValue.map((r, i) => ({len: r.length, index:i})).sort((a,b) => b.len-a.len).slice(0,5)
-                    .sort(() => .5 - Math.random()).forEach(item => {
+                columnsValue.map((r, i) => ({len: r.length, index:i})).sort((a,b) => b.len-a.len)
+                    .slice(0,5).sort(() => .5 - Math.random()).forEach(item => {
                     addNumber(columnsValue[item.index], result);
                 })
 
-                folders.push({folder: f+1,  result});
+                folder.push({result});
                 result.forEach(value => columnsValue.forEach(row => {
                     const v = row.findIndex(v => v === value);
                     if (v !== -1) {
@@ -46,6 +47,7 @@ function main() {
                     }
                 }));
             }
+            folders.push({folder: f+1,rows: folder})
 
         }
         console.log(columnsValue)
