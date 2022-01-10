@@ -4,6 +4,7 @@ Questo script consente di generare cartelle per la tombola.
 Esse vengono generate sotto forma di serie.
 Ogni serie è costituita da 6 cartelle che in totale possiedono tutti i numeri del gioco,
 ciò vuol dire che un numero si presenta ogni sei cartelle.
+
 Le serie partono da 1-6, 7-12 e così via...
 
 ## Installazione
