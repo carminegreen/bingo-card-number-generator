@@ -12,8 +12,10 @@ function main() {
         return console.log("Inserire come numberFolder un multiplo di 6")
     }
 
+    const series = [];
+
     for (let i = 0; i < numberFolder/6; i++) {
-        const folder = [];
+        const folders = [];
         let columnsValue = [
             range(1,10,1),
             range(10,20,1),
@@ -30,11 +32,14 @@ function main() {
 
             for (let j = 0; j < 3; j++) {
                 const result = [];
-                columnsValue.forEach(row => addNumber(row, result) );
-                // prendi 5 numeri per ogni riga
-                const values = result.sort(() => .5 - Math.random()).sort(() => .5 - Math.random()).slice(0,5).sort((a, b) => a-b );
-                folder.push({series: i+1, folder: f+1,  values});
-                values.forEach(value => columnsValue.forEach(row => {
+
+                columnsValue.map((r, i) => ({len: r.length, index:i})).sort((a,b) => b.len-a.len).slice(0,5)
+                    .sort(() => .5 - Math.random()).slice(0,5).forEach(item => {
+                    addNumber(columnsValue[item.index], result);
+                })
+
+                folders.push({folder: f+1,  result});
+                result.forEach(value => columnsValue.forEach(row => {
                     const v = row.findIndex(v => v === value);
                     if (v !== -1) {
                         columnsValue[columnsValue.indexOf(row)] = row.filter(r => r !== value)
@@ -43,14 +48,8 @@ function main() {
             }
 
         }
-        folder.forEach(row => {
-            if(row.values.length === 5) {
-                 return;
-            }
-            // console.log(columnsValue.map(r => r.find(v => !!v)))
-        });
-        // console.log(columnsValue)
-        console.log(folder)
+        console.log(columnsValue)
+        series.push({series: i+1, folders});
 
     }
 }
