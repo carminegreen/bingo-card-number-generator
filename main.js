@@ -34,7 +34,7 @@ function main() {
                 const result = [];
 
                 columnsValue.map((r, i) => ({len: r.length, index:i})).sort((a,b) => b.len-a.len).slice(0,5)
-                    .sort(() => .5 - Math.random()).slice(0,5).forEach(item => {
+                    .sort(() => .5 - Math.random()).forEach(item => {
                     addNumber(columnsValue[item.index], result);
                 })
 
@@ -49,6 +49,7 @@ function main() {
 
         }
         console.log(columnsValue)
+        console.log(folders)
         series.push({series: i+1, folders});
 
     }
