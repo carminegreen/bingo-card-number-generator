@@ -48,10 +48,10 @@ function main() {
                     }
                 }));
             }
-            folders.push({folder: f+1,rows: folder});
+            folders.push(folder);
 
         }
-        series.push({series: i+1, folders});
+        series.push({number: i+1, folders});
 
     }
     fs.writeFile("./folders.json", JSON.stringify(series, null, 4), (err) => {
