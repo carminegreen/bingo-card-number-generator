@@ -59,7 +59,7 @@ function main() {
 
         }
         // console.log(columnsValue)
-        console.log(`Generate ${i+1} serie su ${numberFolder/FOLDER_LENGTH}`);
+        console.log(`Generate ${i+1} series of ${numberFolder/FOLDER_LENGTH}`);
 
 
         if(series.map(arr => arr.folders.map(f => folders.find(folder => JSON.stringify(f) === JSON.stringify(folder)))).filter(v => !v).length !== 0) {
@@ -79,12 +79,3 @@ function writeJson(data, dividend) {
         console.log(`${data.length * dividend} folders were successfully generated!`);
     });
 }
-
-
-// function addNumber(row, result) {
-//     if(row.length === 0) {
-//         return;
-//     }
-//     const casualNumber = Math.floor(Math.random()* row.length);
-//     result.push(row[casualNumber]);
-// }
