@@ -74,7 +74,7 @@ function main() {
 }
 
 function writeJson(name, data, dividend) {
-    fs.writeFile("./folders.json", JSON.stringify(data, null, 4), (err) => {
+    fs.writeFile(name, JSON.stringify(data, null, 4), (err) => {
         if (err) {  console.error(err);  return; }
         console.log(`${data.length * dividend} folders were successfully generated!`);
     });
