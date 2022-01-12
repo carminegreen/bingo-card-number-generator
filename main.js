@@ -54,7 +54,7 @@ function main() {
                 folder.push(folderOrder);
 
             }
-            const number = i === 0 ? f+1 : ((FOLDER_LENGTH * i) + f + 1);
+            const number = ((FOLDER_LENGTH * i) + (f + 1));
             folders.push({number, folder});
 
         }
@@ -63,17 +63,17 @@ function main() {
 
 
         if(series.map(arr => arr.folders.map(f => folders.find(folder => JSON.stringify(f) === JSON.stringify(folder)))).filter(v => !v).length !== 0) {
-            writeJson(series, FOLDER_LENGTH);
+            writeJson("./folders.json", series, FOLDER_LENGTH);
             process.exit(1);
         }
 
         series.push({number: i+1, folders});
 
     }
-    writeJson(series, FOLDER_LENGTH);
+    writeJson("./folders.json", series, FOLDER_LENGTH);
 }
 
-function writeJson(data, dividend) {
+function writeJson(name, data, dividend) {
     fs.writeFile("./folders.json", JSON.stringify(data, null, 4), (err) => {
         if (err) {  console.error(err);  return; }
         console.log(`${data.length * dividend} folders were successfully generated!`);
