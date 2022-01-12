@@ -30,7 +30,7 @@ function main() {
             range(60,70,1),
             range(70,80,1),
             range(80,91,1)
-        ];
+        ].sort(() => .5 - Math.random());
 
         for (let f = 0; f < FOLDER_LENGTH; f++) {
             const folder = [];
