@@ -55,7 +55,7 @@ function main() {
 
             }
             const number = ((FOLDER_LENGTH * i) + (f + 1));
-            folders.push({number, folder});
+            folders.push({number: number.toString(), folder});
 
         }
         // console.log(columnsValue)
@@ -67,7 +67,7 @@ function main() {
             process.exit(1);
         }
 
-        series.push({number: i+1, folders});
+        series.push({number: (i+1).toString(), folders});
 
     }
     writeJson("./folders.json", series, FOLDER_LENGTH);
