@@ -62,10 +62,10 @@ function main() {
         console.log(`Generate ${i+1} series of ${numberFolder/FOLDER_LENGTH}`);
 
 
-        if(series.map(arr => arr.folders.map(f => folders.find(folder => JSON.stringify(f) === JSON.stringify(folder)))).filter(v => !v).length !== 0) {
-            writeJson("./folders.json", series, FOLDER_LENGTH);
-            process.exit(1);
-        }
+        // if(series.map(arr => arr.folders.map(f => folders.find(folder => JSON.stringify(f) === JSON.stringify(folder)))).filter(v => !v).length !== 0) {
+        //     writeJson("./folders.json", series, FOLDER_LENGTH);
+        //     process.exit(1);
+        // }
 
         series.push({number: (i+1).toString(), folders});
 
